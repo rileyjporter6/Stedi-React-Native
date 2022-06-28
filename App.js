@@ -63,7 +63,7 @@ if (userLoggedIn){
 } else{
   return (
   <View>
-  <Login/>
+  <Login setUserLoggedIn={setUserLoggedIn}/>
   </View>
   )
 }
