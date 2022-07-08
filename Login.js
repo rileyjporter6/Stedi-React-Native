@@ -30,10 +30,19 @@ const getToken = async({phoneNumber, oneTimePassword, setUserLoggedIn}) =>{
   if(responseCode==200){
     setUserLoggedIn(true);
   }
-  const tokenResponseString = await tokenResponse.text;
- 
+  const tokenResponseString = await tokenResponse.text();
+ console.log ("token",tokenResponseString)
 }
 
+const getEmailToken = async ({emailAddress}) => {
+const getEmailToken = emailToken=await fetch('https://dev.stedi.me/validate/'+tokenResponse, {
+  method: 'GET',
+  headers:{
+    'Content-Type': 'Application/text'
+  },
+  body:JSON.stringify({emailAddress})
+});
+}
 const Login = (props) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [oneTimePassword, setOneTimePassword] = useState(null);
